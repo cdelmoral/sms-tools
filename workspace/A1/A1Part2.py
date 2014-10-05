@@ -1,5 +1,6 @@
 import sys
 import os
+import numpy as np
 sys.path.append('../../software/models/')
 from utilFunctions import wavread
 
@@ -22,7 +23,9 @@ def minMaxAudio(inputFile):
     Output:
         A tuple of the minimum and the maximum value of the audio samples, like: (min_val, max_val)
     """
-    ## Your code here
-
-
     
+    (fs, x) = wavread(inputFile)
+    min = np.min(x)
+    max = np.max(x)
+
+    return (min, max)
