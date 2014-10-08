@@ -1,4 +1,5 @@
 import numpy as np
+from A2Part2 import genComplexSine
 
 """
 A2-Part-5: Compute the magnitude spectrum (Optional)
@@ -21,5 +22,10 @@ def genMagSpec(x):
         magX (numpy array) = The magnitude spectrum of the input sequence x
                              (length N)
     """
-    ## Your code here
-    
+    XMag = np.array([])
+    N = x.size
+    for k in range(N):
+    	cSine = genComplexSine(k, N)
+    	XMag = np.absolute(np.append(XMag, np.dot(x, cSine)))
+
+    return XMag

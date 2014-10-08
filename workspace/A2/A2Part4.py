@@ -1,4 +1,5 @@
 import numpy as np
+from A2Part2 import genComplexSine
 
 """
 A2-Part-4: Implement the inverse discrete Fourier transform (IDFT)
@@ -32,4 +33,11 @@ def IDFT(X):
         The function should return a numpy array of length N 
         x (numpy array) = The N point IDFT of the frequency spectrum X
     """
-    ## Your code here
+    
+    x = np.array([])
+    N = X.size
+    for k in range(N):
+    	cSine = genComplexSine(-k, N)
+    	x = np.append(x, 1.0/N * np.dot(X, cSine))
+
+    return x
